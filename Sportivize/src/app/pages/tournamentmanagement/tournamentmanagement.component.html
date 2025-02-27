@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="header">
+        <h1>{{ tournoi.nom }}</h1>
+        <a href="/mytournament"><button class="btn">Mes Tournois</button></a>
+    </div>
+
+    <div class="tabs">
+        <div class="tabs-list">
+            <button [class.active]="activeTab === 'matchs'" (click)="setActiveTab('matchs')">Matchs</button>
+            <button [class.active]="activeTab === 'stats'" (click)="setActiveTab('stats')">Statistiques</button>
+            <button [class.active]="activeTab === 'modification'"
+                (click)="setActiveTab('modification')">Modification</button>
+        </div>
+
+        <div *ngIf="activeTab === 'matchs'" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Prochains matchs</h2>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Match</th>
+                                <th>Équipe 1</th>
+                                <th>Équipe 2</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let match of tournoi.matchs">
+                                <td>Match {{ match.id }}</td>
+                                <td>{{ getEquipeNoms(match.equipe1) }}</td>
+                                <td>{{ getEquipeNoms(match.equipe2) }}</td>
+                                <td>{{ getScore(match) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeTab === 'stats'" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Statistiques du tournoi</h2>
+                </div>
+                <div class="card-content stats">
+                    <div class="stat-item">
+                        <span class="icon">🏆</span>
+                        <span>Nombre de participants : {{ tournoi.participants }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="icon">📊</span>
+                        <span>Matchs joués : {{ getMatchsJoues() }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="icon">📅</span>
+                        <span>Date : {{ tournoi.date }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="icon">📍</span>
+                        <span>Lieu : {{ tournoi.lieu }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeTab === 'modification'" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Modifier le tournoi</h2>
+                </div>
+                <div class="card-content">
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="nom">Nom du tournoi</label>
+                            <input id="nom" [(ngModel)]="tournoi.nom" />
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input id="date" type="date" [(ngModel)]="tournoi.date" />
+                        </div>
+                        <div class="form-group">
+                            <label for="lieu">Lieu</label>
+                            <input id="lieu" [(ngModel)]="tournoi.lieu" />
+                        </div>
+                        <div class="form-group">
+                            <label for="participants">Nombre de participants</label>
+                            <input id="participants" type="number" [(ngModel)]="tournoi.participants" />
+                        </div>
+                        <div class="form-group">
+                            <label for="sport">Sport</label>
+                            <select id="sport" [(ngModel)]="tournoi.sport">
+                                <option value="Pétanque">Pétanque</option>
+                                <option value="Football">Football</option>
+                                <option value="Basketball">Basketball</option>
+                                <option value="Tennis">Tennis</option>
+                                <option value="Volleyball">Volleyball</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="button">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

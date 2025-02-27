@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="header">
+        <h1>Tournois</h1>
+        <a href="/mytournament"><button class="btn">Mes Tournois</button></a>
+    </div>
+
+    <div class="form-section">
+        <h2>Créer un nouveau tournoi</h2>
+        <form (ngSubmit)="handleSubmit()" class="form-card">
+            <div class="form-group">
+                <div class="form-field">
+                    <label for="nom">Nom du tournoi</label>
+                    <input type="text" id="nom" [(ngModel)]="nouveauTournoi.nom" name="nom"
+                        placeholder="Entrez le nom du tournoi" />
+                </div>
+                <div class="form-field">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" [(ngModel)]="nouveauTournoi.date" name="date" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-field">
+                    <label for="participants">Nombre de participants</label>
+                    <input type="number" id="participants" [(ngModel)]="nouveauTournoi.participants" name="participants"
+                        placeholder="Nombre de participants" />
+                </div>
+                <div class="form-field">
+                    <label for="lieu">Nom du lieu</label>
+                    <input type="text" id="lieu" [(ngModel)]="nouveauTournoi.lieu" name="lieu"
+                        placeholder="Nom du Lieu" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-field">
+                    <label for="participants">Adresse</label>
+                    <input type="text" id="participants" [(ngModel)]="nouveauTournoi.adresse" name="participants"
+                        placeholder="Adresse" />
+                </div>
+                <div class="form-field">
+                    <label for="lieu">Organisateur</label>
+                    <input type="text" id="lieu" [(ngModel)]="nouveauTournoi.organisateur" name="lieu"
+                        placeholder="Nom de l'organisateur" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-field">
+                    <label for="sport">Sport</label>
+                    <select id="sport" [(ngModel)]="nouveauTournoi.sport" name="sport" class="styled-select">
+                        <option value="">Choisissez un sport</option>
+                        <option *ngFor="let sport of sports" [value]="sport">{{ sport }}</option>
+                    </select>
+                </div>
+                <div class="form-switch">
+                    <label class="label-left" for="public">Tournoi public</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="public" [(ngModel)]="nouveauTournoi.estPublic" name="estPublic" />
+                        <span class="slider"></span>
+                    </label>
+                    <label class="label-right" for="public">Tournoi privé</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary full-width">Créer le tournoi</button>
+        </form>
+    </div>
+
+    <div class="filter-section">
+        <h2>Tournois publics</h2>
+        <div class="filters">
+            <input type="text" [(ngModel)]="filtreLieu" placeholder="Filtrer par lieu" class="input-filter" />
+            <select [(ngModel)]="filtreSport" class="input-filter">
+                <option value="">Tous les sports</option>
+                <option *ngFor="let sport of sports" [value]="sport">{{ sport }}</option>
+            </select>
+        </div>
+
+        <div class="tournois-list">
+            <div class="card" *ngFor="let tournoi of tournoisFiltres">
+                <div class="card-header">
+                    <h3>{{ tournoi.nom }}</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>Date :</strong> {{ tournoi.date }}</p>
+                    <p><strong>Participants :</strong> {{ tournoi.participants }}</p>
+                    <p><strong>Lieu :</strong> {{ tournoi.lieu }}</p>
+                    <p><strong>Adresse :</strong> {{ tournoi.adresse }}</p>
+                    <p><strong>Sport :</strong> {{ tournoi.sport }}</p>
+                    <p><strong>Nom de l'organisateur :</strong> {{ tournoi.organisateur }}</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn-secondary">Participer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

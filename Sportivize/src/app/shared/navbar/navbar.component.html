@@ -1,0 +1,57 @@
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="/"><img src="assets/Logo.png" alt="Tournament App Logo" /></a>
+    </div>
+    <ul class="navbar-links">
+        <li><a href="/">Acceuil</a></li>
+        <li *ngIf="isAuthenticated"><a href="/tournament">Tournois</a></li>
+        <li *ngIf="!isAuthenticated">
+            <a (click)="toggleLogin()">Connexion</a>
+        </li>
+        <li *ngIf="isAuthenticated">
+            <a (click)="logout()">Déconnexion</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="modal-background" *ngIf="showLogin">
+    <div class="modal">
+        <button class="close-modal" (click)="closeModal()">X</button>
+        <h2>Connexion</h2>
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password" required />
+            </div>
+            <button class="submit" type="submit">Login</button>
+        </form>
+        <p class="switch-modal" (click)="switchToSignup()">Créer un compte</p>
+    </div>
+</div>
+
+<div class="modal-background" *ngIf="showSignup">
+    <div class="modal">
+        <button class="close-modal" (click)="closeModal()">X</button>
+        <h2>Création de compte</h2>
+        <form (ngSubmit)="onSignup()">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" [(ngModel)]="username" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="signup-email" name="email" [(ngModel)]="email" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="signup-password" name="password" [(ngModel)]="password" required />
+            </div>
+            <button class="submit" type="submit">S'inscrire</button>
+        </form>
+        <p class="switch-modal" (click)="switchToLogin()">Retour à la connexion</p>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./Sportivize
+      dockerfile: Dockerfile
+    container_name: SportivizeFrontend
+    ports:
+      - 4200:80
+    networks:
+      - sportivize
+      
+  backend:
+    build:
+      context: ./Back
+      dockerfile: Dockerfile 
+    container_name: SportivizeBackend
+    ports:
+      - 3000:3000
+    networks:
+      - sportivize
+      - database
+
+networks:
+  database:
+    external: true
+  sportivize:
+    driver: bridge

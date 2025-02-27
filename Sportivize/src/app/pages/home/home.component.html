@@ -1,0 +1,135 @@
+<app-navbar></app-navbar>
+
+<div class="home-container">
+    <section class="tournoi-section">
+        <div class="container">
+            <div class="content">
+                <div class="text-block">
+                    <h1 class="title">
+                        Simplifiez la gestion de vos tournois sportifs
+                    </h1>
+                    <p class="description">
+                        Sportivize vous offre une plateforme intuitive pour organiser, gérer et suivre vos tournois
+                        en toute simplicité.
+                    </p>
+                </div>
+                <div class="buttons">
+                    <button class="btn-primary" (click)="openSignupModal()">
+                        Commencer gratuitement
+                    </button>
+                    <button class="btn-secondary">
+                        En savoir plus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Nos fonctionnalités</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="card-header">
+                        <img src="assets/trophy.png" alt="Trophy icon" class="icon" />
+                        <h3 class="card-title">Création de tournois</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Créez et personnalisez vos tournois de pétanque en quelques clics.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-header">
+                        <img src="assets/users.png" alt="Users icon" class="icon" />
+                        <h3 class="card-title">Gestion des équipes</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Organisez facilement les équipes et les poules pour vos compétitions.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-header">
+                        <img src="assets/bar-chart.png" alt="Bar chart icon" class="icon" />
+                        <h3 class="card-title">Suivi en temps réel</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Suivez les scores et les classements en temps réel pendant les tournois.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-header">
+                        <img src="assets/map-pin.png" alt="Map pin icon" class="icon" />
+                        <h3 class="card-title">Gestion des terrains</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>Attribuez et gérez efficacement les terrains pour chaque match.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-header">
+                <h2 class="section-title">Nos Tarifs</h2>
+                <p class="section-description">
+                    Choisissez le plan qui convient le mieux à vos besoins d'organisation de tournois.
+                </p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Gratuit</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="price">0€ / mois</p>
+                        <ul class="features">
+                            <li>✅ 2 tournoi par semaine</li>
+                            <li>✅ Gestion des équipes</li>
+                            <li>✅ Suivi des scores en temps réel</li>
+                            <li>✅ Support gratuit</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-primary-price" (click)="openSignupModal()">Commencer gratuitement</button>
+                    </div>
+                </div>
+                <div class="pricing-card pro-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pro</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="price">9,99€ / mois</p>
+                        <ul class="features">
+                            <li>✅ Tournois illimités</li>
+                            <li>✅ Gestion avancée des équipes</li>
+                            <li>✅ Statistiques détaillées</li>
+                            <li>✅ Support prioritaire</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-pro">Choisir Pro</button>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Entreprise</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="price">Sur devis</p>
+                        <ul class="features">
+                            <li>✅ Tournois multi-sports</li>
+                            <li>✅ Personnalisation complète</li>
+                            <li>✅ API dédiée</li>
+                            <li>✅ Support 24/7</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-outline">Contactez-nous</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>

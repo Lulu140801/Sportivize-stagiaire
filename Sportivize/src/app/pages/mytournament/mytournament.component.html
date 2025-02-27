@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="header">
+        <h1>Mes Tournois</h1>
+        <a href="/tournament">
+            <button class="btn">Retour aux tournois</button>
+        </a>
+    </div>
+
+    <div class="filters">
+        <div class="filters-header">
+            <h2>Liste de mes tournois</h2>
+            <select (change)="onFiltreChange($event)" class="select-trigger">
+                <option value="tous">Tous les tournois</option>
+                <option value="en cours">Tournois en cours</option>
+                <option value="terminé">Tournois terminés</option>
+            </select>
+        </div>
+
+        <div class="tournois-grid">
+            <div *ngFor="let tournoi of tournoisFiltres" class="tournoi-card">
+                <div class="card-header">
+                    <h3>{{ tournoi.nom }}</h3>
+                </div>
+
+                <div class="card-content">
+                    <div class="card-row">
+                        <i class="icon calendar-icon"></i>
+                        <span>{{ tournoi.date }}</span>
+                    </div>
+                    <div class="card-row">
+                        <i class="icon users-icon"></i>
+                        <span>{{ tournoi.participants }} participants</span>
+                    </div>
+                    <div class="card-row">
+                        <i class="icon location-icon"></i>
+                        <span>{{ tournoi.lieu }}</span>
+                    </div>
+                    <div>Sport : {{ tournoi.sport }}</div>
+                    <div>Statut : {{ tournoi.statut }}</div>
+                    <div>Visibilité : {{ tournoi.estPublic ? 'Public' : 'Privé' }}</div>
+                </div>
+
+                <div class="card-footer">
+                    <a href="/tournamentmanagement">
+                        <button class="btn btn-full">Gérer le tournoi</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
