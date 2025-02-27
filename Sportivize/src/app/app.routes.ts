@@ -5,6 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { MytournamentComponent } from './pages/mytournament/mytournament.component';
 import { TournamentmanagementComponent } from './pages/tournamentmanagement/tournamentmanagement.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'mytournament', component: MytournamentComponent, canActivate: [AuthGuard] },
     { path: 'tournamentmanagement', component: TournamentmanagementComponent, canActivate: [AuthGuard] },
     { path: 'termsandconditions', component: TermsAndConditionsComponent },
+    { path: 'payment', component: PaymentComponent },
     { path: '', redirectTo: '/', pathMatch: 'full' },
     { path: '**', redirectTo: '/' }
 ];
