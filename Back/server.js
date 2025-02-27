@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const tournamentRoutes = require('./routes/tournamentRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
 const { requireAuth } = require('./middleware/authMiddleware');
 const environment = require('./environement');
 
@@ -29,6 +30,7 @@ async function startServer() {
 
   app.use('/api/auth', authRoutes);
   app.use('/api/tournaments', requireAuth, tournamentRoutes);
+  app.use('/api/payments', paymentRoutes);
 
   const PORT = process.env.PORT || environment.PORT;
   app.listen(PORT, () => {
